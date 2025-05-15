@@ -1,3 +1,9 @@
+import AskInput from '@/components/AskInput';
+
 export default function Home() {
-  return <div>Main</div>;
+  return (
+    <div>
+      <AskInput />
+    </div>
+  );
 }
