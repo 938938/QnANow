@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import ReduxToolkitProvider from '@/config/ReduxProvider';
 
 export const metadata: Metadata = {
   title: 'Ask for...',
@@ -13,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body>{children}</body>
+      <ReduxToolkitProvider>
+        <body>{children}</body>
+      </ReduxToolkitProvider>
     </html>
   );
 }
