@@ -16,7 +16,7 @@ const AskInput = () => {
         onChange={(e) => setAsk(e.target.value)}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
-            e.preventDefault(); // 엔터 시 기본 제출 방지
+            e.preventDefault();
             onClickHandler();
           }
         }}
