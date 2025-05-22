@@ -2,14 +2,14 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export type OxState = {
-  question: string;
+  ask: string;
   answer: string;
   pic: string;
   loading: boolean;
   error: string | null;
 };
 
-const fetchAnswer = createAsyncThunk('/question/ox', async (_, thunkAPI) => {
+const fetchAnswer = createAsyncThunk('/ask/ox', async (_, thunkAPI) => {
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_OX_SERVER}`);
     console.log(res.data);
@@ -23,7 +23,7 @@ const fetchAnswer = createAsyncThunk('/question/ox', async (_, thunkAPI) => {
 });
 
 const initialState: OxState = {
-  question: '',
+  ask: '',
   answer: '',
   pic: '',
   loading: false,
@@ -34,8 +34,8 @@ const oxSlice = createSlice({
   name: 'ox',
   initialState,
   reducers: {
-    setQuestion(state, action: PayloadAction<string>) {
-      state.question = action.payload;
+    setAsk(state, action: PayloadAction<string>) {
+      state.ask = action.payload;
     },
   },
   extraReducers(builder) {
@@ -56,5 +56,5 @@ const oxSlice = createSlice({
   },
 });
 
-export const { setQuestion } = oxSlice.actions;
+export const { setAsk } = oxSlice.actions;
 export default oxSlice.reducer;
