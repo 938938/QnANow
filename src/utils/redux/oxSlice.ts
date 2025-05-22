@@ -9,18 +9,21 @@ export type OxState = {
   error: string | null;
 };
 
-const fetchAnswer = createAsyncThunk('/ask/ox', async (_, thunkAPI) => {
-  try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_OX_SERVER}`);
-    console.log(res.data);
-    return {
-      answer: res.data.answer,
-      pic: res.data.image,
-    };
-  } catch (err) {
-    return thunkAPI.rejectWithValue(err);
+export const fetchOxAnswer = createAsyncThunk(
+  '/ask/ox',
+  async (_, thunkAPI) => {
+    try {
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_OX_SERVER}`);
+      console.log(res.data);
+      return {
+        answer: res.data.answer,
+        pic: res.data.image,
+      };
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err);
+    }
   }
-});
+);
 
 const initialState: OxState = {
   ask: '',
@@ -34,27 +37,27 @@ const oxSlice = createSlice({
   name: 'ox',
   initialState,
   reducers: {
-    setAsk(state, action: PayloadAction<string>) {
+    setOxAsk(state, action: PayloadAction<string>) {
       state.ask = action.payload;
     },
   },
   extraReducers(builder) {
     builder
-      .addCase(fetchAnswer.pending, (state) => {
+      .addCase(fetchOxAnswer.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchAnswer.fulfilled, (state, action) => {
+      .addCase(fetchOxAnswer.fulfilled, (state, action) => {
         state.loading = false;
         state.answer = action.payload.answer;
         state.pic = action.payload.pic;
       })
-      .addCase(fetchAnswer.rejected, (state, action) => {
+      .addCase(fetchOxAnswer.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       });
   },
 });
 
-export const { setAsk } = oxSlice.actions;
+export const { setOxAsk } = oxSlice.actions;
 export default oxSlice.reducer;

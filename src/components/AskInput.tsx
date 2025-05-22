@@ -1,11 +1,15 @@
 'use client';
 
+import { useAppDispatch } from '@/utils/hooks/hooks';
+import { fetchOxAnswer, setOxAsk } from '@/utils/redux/oxSlice';
 import { useState } from 'react';
 
 const AskInput = () => {
   const [ask, setAsk] = useState<string>('');
+  const dispatch = useAppDispatch();
   const onClickHandler = async () => {
-    console.log(ask);
+    dispatch(setOxAsk(ask));
+    dispatch(fetchOxAnswer());
     setAsk('');
   };
   return (
