@@ -1,5 +1,6 @@
 'use client';
 import { useAppSelector } from '@/utils/hooks/hooks';
+import Image from 'next/image';
 
 const Answer = () => {
   const { ask, answer, pic, loading, error } = useAppSelector(
@@ -16,8 +17,17 @@ const Answer = () => {
   return (
     <div>
       <p>{ask}</p>
-      <p>{answer}</p>
-      <p>{pic}</p>
+      {answer && <p>{answer}</p>}
+      {pic && (
+        <div>
+          <Image
+            src={pic}
+            alt={`${answer}을 나타내는 이미지`}
+            width={300}
+            height={300}
+          />
+        </div>
+      )}
     </div>
   );
 };
