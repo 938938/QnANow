@@ -15,11 +15,11 @@ const Answer = () => {
   }
 
   return (
-    <div>
-      <p>{ask}</p>
-      {answer && <p>{answer}</p>}
+    <div className='flex flex-col my-2 w-full items-center gap-2'>
+      {ask && <p>질문 : {ask}?</p>}
+      {answer && <p>답변 : {answer}</p>}
       {pic && (
-        <div>
+        <div className='p-2 border'>
           <Image
             src={pic}
             alt={`${answer}을 나타내는 이미지`}

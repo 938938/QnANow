@@ -4,7 +4,7 @@ import QuestionList from '@/components/QuestionList';
 
 export default function Home() {
   return (
-    <div>
+    <div className='flex flex-col mx-auto max-w-screen-sm my-2'>
       <AskInput />
       <Answer />
       <QuestionList />

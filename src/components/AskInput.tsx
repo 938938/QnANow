@@ -15,7 +15,7 @@ const AskInput = () => {
     setAsk('');
   };
   return (
-    <div className='flex flex-col mx-auto max-w-screen-sm my-2'>
+    <div>
       <InputComponents
         value={ask}
         setValue={setAsk}
