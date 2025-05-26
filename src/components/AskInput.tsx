@@ -9,6 +9,7 @@ import ButtonComponents from './common/ButtonComponents';
 const AskInput = () => {
   const [ask, setAsk] = useState<string>('');
   const dispatch = useAppDispatch();
+  console.log(ask);
   const onClickHandler = async () => {
     dispatch(setOxAsk(ask));
     dispatch(fetchOxAnswer());
