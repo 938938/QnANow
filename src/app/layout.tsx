@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <ReduxToolkitProvider>
-        <body>
+        <body className='bg-defaultMint'>
           <Nav />
           <div>{children}</div>
         </body>
