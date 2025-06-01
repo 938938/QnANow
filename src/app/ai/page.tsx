@@ -24,7 +24,7 @@ const AIpage = () => {
     console.log('AI 응답:', answer);
   };
   return (
-    <div>
+    <div className='flex flex-col mx-auto max-w-screen-sm my-2'>
       <InputComponents
         value={ask}
         setValue={setAsk}
