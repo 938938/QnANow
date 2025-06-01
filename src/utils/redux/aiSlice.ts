@@ -14,7 +14,7 @@ const ai = new GoogleGenAI({
 
 export const fetchAiAnswer = createAsyncThunk(
   '/ask/ai',
-  async (question, thunkAPI) => {
+  async (question: string, thunkAPI) => {
     try {
       const response = await ai.models.generateContent({
         model: 'gemini-2.0-flash',
@@ -49,9 +49,8 @@ const AiSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchAiAnswer.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.loading = false;
-        state.answer = '';
+        state.answer = action.payload!;
       })
       .addCase(fetchAiAnswer.rejected, (state, action) => {
         state.loading = false;
