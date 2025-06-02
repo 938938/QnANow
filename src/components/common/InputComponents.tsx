@@ -2,28 +2,33 @@ const InputComponents = ({
   value,
   setValue,
   onClickHandler,
+  text,
 }: {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
   onClickHandler: () => void;
+  text: string;
 }) => {
   return (
     <form
-      className='mb-6'
+      className='mb-6 flex'
       onSubmit={(e) => {
         e.preventDefault();
         onClickHandler();
       }}
     >
-      {/* <label className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
-        Default input
-      </label> */}
       <input
         type='text'
-        className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
+        className='bg-defaultWhite border border-defaultMint text-gray-900 text-sm focus:ring-2 focus:ring-inset focus:ring-defaultMint focus:outline-none block p-2.5 flex-1'
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
+      <button
+        onClick={onClickHandler}
+        className='bg-defaultWhite px-4 border border-defaultMint active:shadow-[inset_4px_4px_gray]'
+      >
+        {text}
+      </button>
     </form>
   );
 };

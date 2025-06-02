@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang='en'>
       <ReduxToolkitProvider>
         <body className='bg-defaultMint'>
-          <div className='bg-defaultWhite border-2 border-solid border-defaultGreen p-2 w-1/2 mx-auto my-12 relative'>
+          <div className='bg-white border-2 border-solid border-defaultGreen p-2 w-1/2 mx-auto my-12 relative'>
             <Nav />
             <div>{children}</div>
           </div>

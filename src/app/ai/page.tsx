@@ -1,5 +1,4 @@
 'use client';
-import ButtonComponents from '@/components/common/ButtonComponents';
 import InputComponents from '@/components/common/InputComponents';
 import { useAppDispatch, useAppSelector } from '@/utils/hooks/hooks';
 import { fetchAiAnswer, setAiAsk } from '@/utils/redux/aiSlice';
@@ -35,8 +34,8 @@ const AIpage = () => {
         value={ask}
         setValue={setAsk}
         onClickHandler={onClickHandler}
+        text='질문하기'
       />
-      <ButtonComponents text='질문하기' onClickHandler={onClickHandler} />
       {ask && <p>질문 : {ask}?</p>}
       {answer && <p>답변 : {answer}</p>}
     </div>
