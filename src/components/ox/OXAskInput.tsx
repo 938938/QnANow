@@ -4,6 +4,7 @@ import { useAppDispatch } from '@/utils/hooks/hooks';
 import { fetchOxAnswer, setOxAsk } from '@/utils/redux/oxSlice';
 import { useState } from 'react';
 import InputComponents from '../common/InputComponents';
+import { defaultQuestionList } from '@/utils/global';
 
 const OXAskInput = () => {
   const [ask, setAsk] = useState<string>('');
@@ -20,6 +21,7 @@ const OXAskInput = () => {
       setValue={setAsk}
       onClickHandler={onClickHandler}
       text='질문하기'
+      list={defaultQuestionList}
     />
   );
 };

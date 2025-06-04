@@ -4,6 +4,7 @@ import { useAppDispatch } from '@/utils/hooks/hooks';
 import { useState } from 'react';
 import { fetchAiAnswer, setAiAsk } from '@/utils/redux/aiSlice';
 import InputComponents from '../common/InputComponents';
+import { defaultQuestionList } from '@/utils/global';
 
 const AIAskInput = () => {
   const [ask, setAsk] = useState<string>('');
@@ -20,6 +21,7 @@ const AIAskInput = () => {
       setValue={setAsk}
       onClickHandler={onClickHandler}
       text='질문하기'
+      list={defaultQuestionList}
     />
   );
 };
