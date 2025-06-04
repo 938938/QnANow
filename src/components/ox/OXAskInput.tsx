@@ -1,17 +1,17 @@
 'use client';
 
 import { useAppDispatch } from '@/utils/hooks/hooks';
+import { fetchOxAnswer, setOxAsk } from '@/utils/redux/oxSlice';
 import { useState } from 'react';
-import InputComponents from './common/InputComponents';
-import { fetchAiAnswer, setAiAsk } from '@/utils/redux/aiSlice';
+import InputComponents from '../common/InputComponents';
 
-const AIAskInput = () => {
+const OXAskInput = () => {
   const [ask, setAsk] = useState<string>('');
   const dispatch = useAppDispatch();
   const onClickHandler = async () => {
     if (!ask) return;
-    dispatch(setAiAsk(ask));
-    dispatch(fetchAiAnswer(ask));
+    dispatch(setOxAsk(ask));
+    dispatch(fetchOxAnswer());
     setAsk('');
   };
   return (
@@ -24,4 +24,4 @@ const AIAskInput = () => {
   );
 };
 
-export default AIAskInput;
+export default OXAskInput;

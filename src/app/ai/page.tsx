@@ -1,5 +1,5 @@
-import AIAnswer from '@/components/AIAnswer';
-import AIAskInput from '@/components/AIAskInput';
+import AIAnswer from "@/components/ai/AIAnswer";
+import AIAskInput from "@/components/ai/AIAskInput";
 
 const AIpage = () => {
   return (
