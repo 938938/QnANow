@@ -20,7 +20,7 @@ const InputComponents = ({
   const filtered = list.filter((item) =>
     item.toLowerCase().includes(value.toLowerCase())
   );
-  const onKeyUpHandler = (e) => {
+  const onKeyUpHandler = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'ArrowDown' && selected < filtered.length - 1) {
       setSelected(selected + 1);
     } else if (e.key === 'ArrowUp' && selected > 0) {
@@ -31,7 +31,6 @@ const InputComponents = ({
       onClickHandler();
     }
   };
-  console.log(selected);
   return (
     <div onKeyUp={onKeyUpHandler}>
       <form
