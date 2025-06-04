@@ -16,11 +16,24 @@ const InputComponents = ({
   list: string[];
 }) => {
   const [showList, setShowList] = useState<boolean>(false);
+  const [selected, setSelected] = useState<number>(-1);
   const filtered = list.filter((item) =>
     item.toLowerCase().includes(value.toLowerCase())
   );
+  const onKeyUpHandler = (e) => {
+    if (e.key === 'ArrowDown' && selected < filtered.length - 1) {
+      setSelected(selected + 1);
+    } else if (e.key === 'ArrowUp' && selected > 0) {
+      setSelected(selected - 1);
+    }
+    if (e.key === 'Enter' && selected >= 0) {
+      setValue(filtered[selected]);
+      onClickHandler();
+    }
+  };
+  console.log(selected);
   return (
-    <>
+    <div onKeyUp={onKeyUpHandler}>
       <form
         className='flex'
         onSubmit={(e) => {
@@ -48,14 +61,19 @@ const InputComponents = ({
           {filtered.map((ele, idx) => (
             <li
               key={idx}
-              className='bg-defaultBrown text-gray-800 p-2.5 border-white border-b-2'
+              className={` text-gray-800 p-2.5 border-white border-b-2 ${
+                selected === Number(idx) ? 'bg-defaultMint' : 'bg-defaultBrown'
+              }`}
+              onMouseDown={() => {
+                setValue(ele);
+              }}
             >
               {ele}
             </li>
           ))}
         </ul>
       )}
-    </>
+    </div>
   );
 };
 
