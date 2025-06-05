@@ -42,7 +42,7 @@ const InputComponents = ({
       >
         <input
           type='text'
-          className='bg-defaultWhite border border-defaultMint text-gray-900 text-sm focus:ring-2 focus:ring-inset focus:ring-defaultMint focus:outline-none block p-2.5 flex-1'
+          className='bg-white border-defaultMidnightexpress border-2 text-gray-900 text-sm focus:ring-inset focus:ring-defaultMidnightexpress focus:outline-none block p-2.5 flex-1'
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onFocus={() => setShowList(true)}
@@ -50,18 +50,20 @@ const InputComponents = ({
         />
         <button
           onClick={onClickHandler}
-          className='bg-defaultWhite px-4 border border-defaultMint active:shadow-[inset_4px_4px_gray]'
+          className='bg-white px-4 border-defaultMidnightexpress border-2 active:shadow-[inset_4px_4px_gray] border-l-0'
         >
           {text}
         </button>
       </form>
       {showList && filtered.length > 0 && (
-        <ul>
+        <ul className='border-2 border-defaultMidnightexpress border-t-0'>
           {filtered.map((ele, idx) => (
             <li
               key={idx}
-              className={` text-gray-800 p-2.5 border-white border-b-2 ${
-                selected === Number(idx) ? 'bg-defaultMint' : 'bg-defaultBrown'
+              className={`text-gray-800 p-2.5 border-defaultWisper border-b-2 ${
+                selected === Number(idx)
+                  ? 'bg-defaultLightblue'
+                  : 'bg-defaultCreamGray'
               }`}
               onMouseDown={() => {
                 setValue(ele);

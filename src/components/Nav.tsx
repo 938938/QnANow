@@ -11,10 +11,10 @@ const navItems = [
 const Nav = () => {
   const pathname = usePathname();
   const linkStyleHandler = (href: string) => {
-    const base =
-      'bg-defaultWhite border-2 border-solid border-defaultGreen p-2';
+    const base = 'border-2 border-solid border-defaultMidnightexpress p-2';
     const active = 'border-b-0 bg-white';
-    return `${base} ${pathname === href ? active : ''}`;
+    const passive = 'bg-defaultCreamGray';
+    return `${base} ${pathname === href ? active : passive}`;
   };
 
   return (
