@@ -18,7 +18,7 @@ export const fetchAiAnswer = createAsyncThunk(
     try {
       const response = await ai.models.generateContent({
         model: 'gemini-2.0-flash',
-        contents: `다음 질문에 대해 친절하고 간단하게 한 문장으로 대답해줘:\n"${question}"`,
+        contents: `다음 질문에 대해 친절하고 정성스럽게 한 문장으로 대답해줘:\n"${question}"`,
       });
       return response.text;
     } catch (err) {
