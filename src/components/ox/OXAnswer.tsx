@@ -15,7 +15,7 @@ const OXAnswer = () => {
   }
 
   return (
-    <div className='flex flex-col my-2 w-full items-center gap-2'>
+    <div className='flex flex-col my-2 w-full items-center gap-2 h-96'>
       {ask && <p>질문 : {ask}?</p>}
       {answer && <p>답변 : {answer}</p>}
       {pic && (

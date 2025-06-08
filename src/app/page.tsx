@@ -1,7 +1,6 @@
 import Title from '@/components/common/Title';
 import OXAnswer from '@/components/ox/OXAnswer';
 import OXAskInput from '@/components/ox/OXAskInput';
-import QuestionList from '@/components/QuestionList';
 
 export default function Home() {
   return (
@@ -12,7 +11,6 @@ export default function Home() {
       />
       <OXAskInput />
       <OXAnswer />
-      <QuestionList />
     </div>
   );
 }

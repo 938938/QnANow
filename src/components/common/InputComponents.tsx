@@ -32,7 +32,7 @@ const InputComponents = ({
     }
   };
   return (
-    <div onKeyUp={onKeyUpHandler}>
+    <div onKeyUp={onKeyUpHandler} className='relative'>
       <form
         className='flex'
         onSubmit={(e) => {
@@ -56,7 +56,7 @@ const InputComponents = ({
         </button>
       </form>
       {showList && filtered.length > 0 && (
-        <ul className='border-2 border-defaultMidnightexpress border-t-0'>
+        <ul className='border-2 border-defaultMidnightexpress border-t-0 absolute w-full'>
           {filtered.map((ele, idx) => (
             <li
               key={idx}
