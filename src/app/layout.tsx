@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang='en'>
       <ReduxToolkitProvider>
         <body className='bg-defaultWisper'>
-          <div className='bg-white border-2 border-solid border-defaultMidnightexpress p-2 w-full md:w-1/2 mx-auto my-12 relative'>
+          <div className='bg-white border-2 border-solid border-defaultMidnightexpress p-2 w-full md:w-1/2 mx-auto mt-12 relative min-h-[90dvh]'>
             <Nav />
             <div>{children}</div>
           </div>
