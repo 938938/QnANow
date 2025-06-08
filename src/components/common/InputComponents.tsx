@@ -19,7 +19,7 @@ const InputComponents = ({
   text: string;
   list: string[];
 }) => {
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [showList, setShowList] = useState<boolean>(false);
   const filtered = list.filter((item) =>
     item.toLowerCase().includes(value.toLowerCase())
@@ -42,6 +42,9 @@ const InputComponents = ({
         onSubmit={(e) => {
           e.preventDefault();
           onClickHandler();
+          if (selected === -1) {
+            inputRef.current!.blur();
+          }
         }}
       >
         <input
