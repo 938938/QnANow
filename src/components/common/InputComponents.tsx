@@ -69,7 +69,7 @@ const InputComponents = ({
           {filtered.map((ele, idx) => (
             <li
               key={idx}
-              className={`text-gray-800 p-2.5 border-defaultWisper border-b-2 ${
+              className={`text-gray-800 p-2.5 border-defaultWisper border-b-2 hover:bg-defaultLightblue ${
                 selected === Number(idx)
                   ? 'bg-defaultLightblue'
                   : 'bg-defaultCreamGray'
