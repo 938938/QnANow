@@ -5,6 +5,7 @@ export type OxState = {
   ask: string;
   answer: string;
   pic: string;
+  bgSet: string;
   loading: boolean;
   error: string | null;
 };
@@ -70,6 +71,7 @@ export const fetchOxAnswer = createAsyncThunk(
       return {
         answer: output,
         pic: safeImage,
+        bgSet: answer,
       };
     } catch (err) {
       return thunkAPI.rejectWithValue(err);
@@ -81,6 +83,7 @@ const initialState: OxState = {
   ask: '',
   answer: '',
   pic: '',
+  bgSet: '',
   loading: false,
   error: null,
 };
@@ -103,6 +106,7 @@ const oxSlice = createSlice({
         state.loading = false;
         state.answer = action.payload.answer;
         state.pic = action.payload.pic;
+        state.bgSet = action.payload.bgSet;
       })
       .addCase(fetchOxAnswer.rejected, (state, action) => {
         state.loading = false;
