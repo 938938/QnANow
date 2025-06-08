@@ -36,7 +36,7 @@ const InputComponents = ({
     }
   };
   return (
-    <div onKeyUp={onKeyUpHandler} className='relative'>
+    <div onKeyUp={onKeyUpHandler} className='relative z-10'>
       <form
         className='flex'
         onSubmit={(e) => {
