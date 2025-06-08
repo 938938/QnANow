@@ -55,6 +55,7 @@ const InputComponents = ({
           onChange={(e) => setValue(e.target.value)}
           onFocus={() => setShowList(true)}
           onBlur={() => setShowList(false)}
+          placeholder='이곳에 질문을 입력해주세요.'
         />
         <button
           onClick={onClickHandler}
