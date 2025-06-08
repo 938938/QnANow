@@ -1,22 +1,26 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 const InputComponents = ({
   value,
   setValue,
+  selected,
+  setSelected,
   onClickHandler,
   text,
   list,
 }: {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
+  selected: number;
+  setSelected: React.Dispatch<React.SetStateAction<number>>;
   onClickHandler: () => void;
   text: string;
   list: string[];
 }) => {
+  const inputRef = useRef(null);
   const [showList, setShowList] = useState<boolean>(false);
-  const [selected, setSelected] = useState<number>(-1);
   const filtered = list.filter((item) =>
     item.toLowerCase().includes(value.toLowerCase())
   );
@@ -41,6 +45,7 @@ const InputComponents = ({
         }}
       >
         <input
+          ref={inputRef}
           type='text'
           className='bg-white border-defaultMidnightexpress border-2 text-gray-900 text-sm focus:ring-inset focus:ring-defaultMidnightexpress focus:outline-none block p-2.5 flex-1'
           value={value}
