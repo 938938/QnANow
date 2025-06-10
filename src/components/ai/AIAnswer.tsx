@@ -13,8 +13,20 @@ const AIAnswer = () => {
 
   return (
     <div className='flex flex-col my-2 w-full items-center gap-2'>
-      {ask && <p>질문 : {ask}?</p>}
-      {answer && <p>답변 : {answer}</p>}
+      {ask && (
+        <div className='flex w-full justify-start'>
+          <div className='bg-defaultLightblue p-4 shadow max-w-md'>
+            <p>{ask}?</p>
+          </div>
+        </div>
+      )}
+      {answer && (
+        <div className='flex w-full justify-end'>
+          <div className='bg-defaultCreamGray p-4 shadow max-w-md'>
+            <p>{answer}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
