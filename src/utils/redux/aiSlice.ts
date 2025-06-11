@@ -6,6 +6,7 @@ export type AiState = {
   answer: string;
   loading: boolean;
   error: string | null;
+  list: { ask: string; answer: string }[];
 };
 
 const ai = new GoogleGenAI({
@@ -20,7 +21,10 @@ export const fetchAiAnswer = createAsyncThunk(
         model: 'gemini-2.0-flash',
         contents: `다음 질문에 대해 친절하고 정성스럽게 한 문장으로 대답해줘:\n"${question}"`,
       });
-      return response.text;
+      return {
+        ask: question,
+        answer: `${response.text}`,
+      };
     } catch (err) {
       return thunkAPI.rejectWithValue(err);
     }
@@ -32,6 +36,7 @@ const initialState: AiState = {
   answer: '',
   loading: false,
   error: null,
+  list: [],
 };
 
 const AiSlice = createSlice({
@@ -50,7 +55,8 @@ const AiSlice = createSlice({
       })
       .addCase(fetchAiAnswer.fulfilled, (state, action) => {
         state.loading = false;
-        state.answer = action.payload!;
+        const prev = state.list;
+        state.list = [action.payload, ...prev];
       })
       .addCase(fetchAiAnswer.rejected, (state, action) => {
         state.loading = false;
