@@ -2,8 +2,6 @@ import { GoogleGenAI } from '@google/genai';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type AiState = {
-  ask: string;
-  answer: string;
   loading: boolean;
   error: string | null;
   list: { ask: string; answer: string }[];
@@ -32,8 +30,6 @@ export const fetchAiAnswer = createAsyncThunk(
 );
 
 const initialState: AiState = {
-  ask: '',
-  answer: '',
   loading: false,
   error: null,
   list: [],
@@ -42,11 +38,7 @@ const initialState: AiState = {
 const AiSlice = createSlice({
   name: 'ai',
   initialState,
-  reducers: {
-    setAiAsk(state, action: PayloadAction<string>) {
-      state.ask = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers(builder) {
     builder
       .addCase(fetchAiAnswer.pending, (state) => {
@@ -65,5 +57,5 @@ const AiSlice = createSlice({
   },
 });
 
-export const { setAiAsk } = AiSlice.actions;
+export const {} = AiSlice.actions;
 export default AiSlice.reducer;

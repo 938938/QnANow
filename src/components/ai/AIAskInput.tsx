@@ -2,7 +2,7 @@
 
 import { useAppDispatch } from '@/utils/hooks/hooks';
 import { useState } from 'react';
-import { fetchAiAnswer, setAiAsk } from '@/utils/redux/aiSlice';
+import { fetchAiAnswer } from '@/utils/redux/aiSlice';
 import InputComponents from '../common/InputComponents';
 import { defaultQuestionList } from '@/utils/global';
 
@@ -12,7 +12,6 @@ const AIAskInput = () => {
   const dispatch = useAppDispatch();
   const onClickHandler = async () => {
     if (!ask) return;
-    dispatch(setAiAsk(ask));
     dispatch(fetchAiAnswer(ask));
     setAsk('');
     setSelected(-1);

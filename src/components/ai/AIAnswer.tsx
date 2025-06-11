@@ -3,9 +3,7 @@ import { useAppSelector } from '@/utils/hooks/hooks';
 import Spinner from '../common/Spinner';
 
 const AIAnswer = () => {
-  const { ask, answer, list, loading, error } = useAppSelector(
-    (state) => state.ai
-  );
+  const { list, loading, error } = useAppSelector((state) => state.ai);
   if (error) {
     return <p>답변을 가져오는 것에 실패했습니다.</p>;
   }
