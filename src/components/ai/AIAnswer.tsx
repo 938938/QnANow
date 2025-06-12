@@ -17,7 +17,7 @@ const AIAnswer = ({
         </div>
       )}
       {ask && (
-        <div className='flex w-full justify-start'>
+        <div className='flex w-full justify-start relative'>
           <div className='bg-defaultLightblue p-4 shadow max-w-md'>
             <p>{ask}</p>
           </div>
