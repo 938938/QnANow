@@ -4,7 +4,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 export type AiState = {
   loading: boolean;
   error: string | null;
-  list: { ask: string; answer: string }[];
+  list: { ask: string; answer: string; date: string }[];
 };
 
 const ai = new GoogleGenAI({
@@ -22,6 +22,7 @@ export const fetchAiAnswer = createAsyncThunk(
       return {
         ask: question,
         answer: `${response.text}`,
+        date: new Date().toLocaleString(),
       };
     } catch (err) {
       return thunkAPI.rejectWithValue(err);

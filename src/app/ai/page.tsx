@@ -1,4 +1,4 @@
-import AIAnswer from '@/components/ai/AIAnswer';
+import AIAnswerList from '@/components/ai/AIAnswerList';
 import AIAskInput from '@/components/ai/AIAskInput';
 import Title from '@/components/common/Title';
 
@@ -10,7 +10,7 @@ const AIpage = () => {
         sub='간단한 질문을 해보세요, 정성껏 답변해드릴게요!'
       />
       <AIAskInput />
-      <AIAnswer />
+      <AIAnswerList />
     </div>
   );
 };
