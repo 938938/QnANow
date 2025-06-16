@@ -10,7 +10,7 @@ const AIAnswer = ({
   return (
     <div className='flex flex-col my-4 w-full items-center gap-2'>
       {date && (
-        <div className='w-full flex justify-center items-center gap-2 px-4'>
+        <div className='w-full flex justify-center items-center gap-2 px-6'>
           <div className='flex-grow border-t border-dashed border-gray-300' />
           <span className='text-gray-500 whitespace-nowrap'>{date}</span>
           <div className='flex-grow border-t border-dashed border-gray-300' />
