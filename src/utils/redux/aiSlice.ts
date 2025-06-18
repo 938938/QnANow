@@ -1,5 +1,6 @@
+import { createAsk } from '@/actions/ask-actions';
 import { GoogleGenAI } from '@google/genai';
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export type AiState = {
   loading: boolean;
@@ -19,6 +20,7 @@ export const fetchAiAnswer = createAsyncThunk(
         model: 'gemini-2.0-flash',
         contents: `다음 질문에 대해 친절하고 정성스럽게 한 문장으로 대답해줘:\n"${question}"`,
       });
+      await createAsk({ask:question, answer:`${response.text}`})
       return {
         ask: question,
         answer: `${response.text}`,
