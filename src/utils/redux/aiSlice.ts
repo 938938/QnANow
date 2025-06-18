@@ -1,4 +1,4 @@
-import { createAsk } from '@/actions/ask-actions';
+import { createAsk, getAsks } from '@/actions/ask-actions';
 import { GoogleGenAI } from '@google/genai';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
@@ -20,12 +20,25 @@ export const fetchAiAnswer = createAsyncThunk(
         model: 'gemini-2.0-flash',
         contents: `다음 질문에 대해 친절하고 정성스럽게 한 문장으로 대답해줘:\n"${question}"`,
       });
-      await createAsk({ask:question, answer:`${response.text}`})
+      await createAsk({ ask: question, answer: `${response.text}` });
       return {
         ask: question,
         answer: `${response.text}`,
         date: new Date().toLocaleString(),
       };
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err);
+    }
+  }
+);
+
+export const fetchAnswerList = createAsyncThunk(
+  '/ask/list',
+  async (_, thunkAPI) => {
+    try {
+      const data = await getAsks();
+      console.log(data);
+      return data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err);
     }

@@ -1,5 +1,5 @@
 'use client';
-import { useAppSelector } from '@/utils/hooks/hooks';
+import { useAppSelector } from '@/utils/hooks/useRedux';
 import Image from 'next/image';
 import Spinner from '../common/Spinner';
 

@@ -28,3 +28,17 @@ export const createAsk = async (question: QuestionRowInsert) => {
 
   return data;
 };
+
+export const getAsks = async () => {
+  const supabase = await createServerSupabaseClient();
+  const { data, error } = await supabase
+    .from('question')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    errorHandler(error);
+  }
+
+  return data;
+};

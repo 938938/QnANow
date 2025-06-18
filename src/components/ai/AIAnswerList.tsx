@@ -1,10 +1,11 @@
 'use client';
-import { useAppSelector } from '@/utils/hooks/hooks';
+
 import Spinner from '../common/Spinner';
 import AIAnswer from './AIAnswer';
+import { useGetAsks } from '@/utils/hooks/useGetAsks';
 
 const AIAnswerList = () => {
-  const { list, loading, error } = useAppSelector((state) => state.ai);
+  const { data, isLoading, error } = useGetAsks();
   if (error) {
     return <p>답변을 가져오는 것에 실패했습니다.</p>;
   }
@@ -17,14 +18,19 @@ const AIAnswerList = () => {
         msOverflowStyle: 'none',
       }}
     >
-      {loading && (
+      {isLoading && (
         <div className='flex justify-center items-center'>
           <Spinner />
         </div>
       )}
-      {list.length > 0 &&
-        list.map((ele) => (
-          <AIAnswer ask={ele.ask} answer={ele.answer} date={ele.date} />
+      {data &&
+        data.length > 0 &&
+        data.map((ele) => (
+          <AIAnswer
+            ask={ele.ask}
+            answer={ele.answer}
+            date={new Date(ele.created_at).toLocaleString()}
+          />
         ))}
     </div>
   );

@@ -1,6 +1,6 @@
 'use client';
 
-import { useAppDispatch } from '@/utils/hooks/hooks';
+import { useAppDispatch } from '@/utils/hooks/useRedux';
 import { fetchOxAnswer, setOxAsk } from '@/utils/redux/oxSlice';
 import { useState } from 'react';
 import InputComponents from '../common/InputComponents';
