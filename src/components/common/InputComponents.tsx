@@ -58,7 +58,7 @@ const InputComponents = ({
           placeholder='이곳에 질문을 입력해주세요.'
         />
         <button
-          onClick={onClickHandler}
+          type='submit'
           className='bg-white px-4 border-defaultMidnightexpress border-2 active:shadow-[inset_4px_4px_gray] border-l-0'
         >
           {text}
