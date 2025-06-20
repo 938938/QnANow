@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang='en'>
       <ReactQueryClientProvider>
         <ReduxToolkitProvider>
-          <body className='bg-defaultWisper'>
+          <body className='bg-defaultWisper p-2'>
             <div className='bg-white border-2 border-solid border-defaultMidnightexpress p-2 w-full md:w-1/2 mx-auto mt-12 relative min-h-[90dvh]'>
               <Nav />
               <div>{children}</div>
