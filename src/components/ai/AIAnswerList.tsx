@@ -27,6 +27,7 @@ const AIAnswerList = () => {
         data.length > 0 &&
         data.map((ele) => (
           <AIAnswer
+            key={ele.created_at}
             ask={ele.ask}
             answer={ele.answer}
             date={new Date(ele.created_at).toLocaleString()}
