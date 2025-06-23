@@ -22,17 +22,13 @@ const InputComponents = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const [showList, setShowList] = useState<boolean>(false);
   const filtered = list.filter((item) =>
-    item.toLowerCase().includes(value.toLowerCase())
+    item.toLowerCase().includes(`${value}`.toLowerCase())
   );
   const onKeyUpHandler = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'ArrowDown' && selected < filtered.length - 1) {
       setSelected(selected + 1);
     } else if (e.key === 'ArrowUp' && selected > 0) {
       setSelected(selected - 1);
-    }
-    if (e.key === 'Enter' && selected >= 0) {
-      setValue(filtered[selected]);
-      onClickHandler();
     }
   };
   return (
@@ -41,6 +37,10 @@ const InputComponents = ({
         className='flex'
         onSubmit={(e) => {
           e.preventDefault();
+          if (selected >= 0) {
+            setValue(filtered[selected]);
+            setSelected(-1);
+          }
           onClickHandler();
           if (selected === -1) {
             inputRef.current!.blur();

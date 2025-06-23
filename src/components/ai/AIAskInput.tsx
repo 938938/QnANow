@@ -21,7 +21,7 @@ const AIAskInput = () => {
       contents: `다음 질문에 대해 친절하고 정성스럽게 한 문장으로 대답해줘:\n"${ask}"`,
     });
     mutate({ ask, answer: `${response.text}` });
-    setAsk('');
+    setAsk(() => '');
     setSelected(-1);
   };
   return (
