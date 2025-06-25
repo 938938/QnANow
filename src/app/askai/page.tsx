@@ -1,6 +1,6 @@
-import AIAnswerList from '@/components/ai/AIAnswerList';
-import AIAskInput from '@/components/ai/AIAskInput';
-import AITooltips from '@/components/ai/AITooltips';
+import AIAnswerList from '@/components/askai/AIAnswerList';
+import AIAskInput from '@/components/askai/AIAskInput';
+import AITooltips from '@/components/askai/AITooltips';
 import Title from '@/components/common/Title';
 
 const AIpage = () => {

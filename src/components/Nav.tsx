@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 const navItems = [
   { href: '/', label: 'Ask OX' },
-  { href: '/ai', label: 'Ask AI' },
+  { href: '/askai', label: 'Ask AI' },
 ];
 
 const Nav = () => {
