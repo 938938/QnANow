@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 굿즈 계산기
 
-## Getting Started
+NextJS14, material-tailwind, Recoil,
+<br>
+[사이트](https://qua-now.vercel.app/)
+<br>
+개인이 판매하는 물건을 계산할 수 있는 사이트입니다.<br>
+수량을 체크하여 총액을 계산하거나, 재고를 관리할 수 있습니다.<br>
+정산 탭을 통해 판매내역을 파악할 수 있습니다.
+<br>
+<br>
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<br>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ask OK 화면
+<br>
+<img width="200" alt="Image" src="https://github.com/user-attachments/assets/88f41993-1c19-4bd0-a9df-88df2f8a117e" />
+<img width="200" alt="Image" src="https://github.com/user-attachments/assets/3deb09aa-3d51-4a7a-b859-7b416bdbf064" />
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Ask AI 화면
+<br>
+<img width="200" alt="Image" src="https://github.com/user-attachments/assets/6030c054-d44d-4cdb-8097-eed7b19fca34" />
+<img width="200" alt="Image" src="https://github.com/user-attachments/assets/7b5d410c-19f2-4ed4-b045-8ee96ac10d57" />
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+<br>
 
-To learn more about Next.js, take a look at the following resources:
+## 업데이트 기록
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- ver1.0.0 <br>
+  Open API를 통해 질문에 대한 답변을 확인할 수 있습니다.<br>
