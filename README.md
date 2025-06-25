@@ -1,6 +1,6 @@
 # 굿즈 계산기
 
-NextJS14, material-tailwind, Recoil,
+NextJS14, tyepscript, supabase, tailwind CSS, redux-toolkit, react-query
 <br>
 [사이트](https://qua-now.vercel.app/)
 <br>
