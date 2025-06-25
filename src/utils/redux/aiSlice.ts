@@ -37,7 +37,6 @@ export const fetchAnswerList = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const data = await getAsks();
-      console.log(data);
       return data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err);
