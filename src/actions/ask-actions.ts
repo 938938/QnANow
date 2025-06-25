@@ -9,7 +9,7 @@ export type QuestionRowInsert =
 export type QuestionRowUpdate =
   Database['public']['Tables']['question']['Update'];
 
-const errorHandler = (error: any) => {
+const errorHandler = (error: Error) => {
   throw new Error(error.message);
 };
 
