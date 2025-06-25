@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const navItems = [
-  { href: '/', label: 'OX로 답변받기' },
-  { href: '/ai', label: 'AI에게 물어보기' },
+  { href: '/', label: 'Ask OX' },
+  { href: '/ai', label: 'Ask AI' },
 ];
 
 const Nav = () => {
