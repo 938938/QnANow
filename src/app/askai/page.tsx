@@ -9,7 +9,7 @@ const AIpage = () => {
       <Title
         title='Ask AI !'
         sub='간단한 질문을 해보세요, 정성껏 답변해드릴게요!'
-        warn={`AI 질문과 답변은 모든 사용자에게 공유됩니다.`}
+        warn={`AI 질문과 답변은 모든 사용자가 공유합니다.`}
       />
       <AITooltips />
       <AIAskInput />
