@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export type OxState = {
@@ -60,7 +60,7 @@ const getRandomAnswer = (answer: string): string => {
 
 export const fetchOxAnswer = createAsyncThunk(
   '/ask/ox',
-  async (_, thunkAPI) => {
+  async (ask: string, thunkAPI) => {
     try {
       const res = await axios.get(`${process.env.NEXT_PUBLIC_OX_SERVER}`);
       const { answer, image } = res.data;
@@ -69,6 +69,7 @@ export const fetchOxAnswer = createAsyncThunk(
       const output = getRandomAnswer(answer);
 
       return {
+        ask,
         answer: output,
         pic: safeImage,
         bgSet: answer,
@@ -91,11 +92,7 @@ const initialState: OxState = {
 const oxSlice = createSlice({
   name: 'ox',
   initialState,
-  reducers: {
-    setOxAsk(state, action: PayloadAction<string>) {
-      state.ask = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers(builder) {
     builder
       .addCase(fetchOxAnswer.pending, (state) => {
@@ -104,6 +101,7 @@ const oxSlice = createSlice({
       })
       .addCase(fetchOxAnswer.fulfilled, (state, action) => {
         state.loading = false;
+        state.ask = action.payload.ask;
         state.answer = action.payload.answer;
         state.pic = action.payload.pic;
         state.bgSet = action.payload.bgSet;
@@ -115,5 +113,5 @@ const oxSlice = createSlice({
   },
 });
 
-export const { setOxAsk } = oxSlice.actions;
+export const {} = oxSlice.actions;
 export default oxSlice.reducer;
