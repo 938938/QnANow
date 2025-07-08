@@ -1,11 +1,10 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+export type OX = { ask: string; answer: string; pic: string; bgSet: string };
+
 export type OxState = {
-  ask: string;
-  answer: string;
-  pic: string;
-  bgSet: string;
+  list: OX[];
   loading: boolean;
   error: string | null;
 };
@@ -81,10 +80,7 @@ export const fetchOxAnswer = createAsyncThunk(
 );
 
 const initialState: OxState = {
-  ask: '',
-  answer: '',
-  pic: '',
-  bgSet: '',
+  list: [],
   loading: false,
   error: null,
 };
@@ -92,7 +88,11 @@ const initialState: OxState = {
 const oxSlice = createSlice({
   name: 'ox',
   initialState,
-  reducers: {},
+  reducers: {
+    setList(state, action: PayloadAction<OX[]>) {
+      state.list = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchOxAnswer.pending, (state) => {
@@ -101,10 +101,8 @@ const oxSlice = createSlice({
       })
       .addCase(fetchOxAnswer.fulfilled, (state, action) => {
         state.loading = false;
-        state.ask = action.payload.ask;
-        state.answer = action.payload.answer;
-        state.pic = action.payload.pic;
-        state.bgSet = action.payload.bgSet;
+        const prev = state.list;
+        state.list = [action.payload, ...prev];
       })
       .addCase(fetchOxAnswer.rejected, (state, action) => {
         state.loading = false;
