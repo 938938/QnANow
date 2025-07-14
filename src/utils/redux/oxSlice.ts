@@ -1,10 +1,16 @@
+import { addList } from '@/actions/ox-actions';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export type OX = { ask: string; answer: string; pic: string; bgSet: string };
+export type OXType = {
+  ask: string;
+  answer: string;
+  pic: string;
+  bgSet: string;
+};
 
 export type OxState = {
-  list: OX[];
+  list: OXType[];
   loading: boolean;
   error: string | null;
 };
@@ -89,7 +95,7 @@ const oxSlice = createSlice({
   name: 'ox',
   initialState,
   reducers: {
-    setList(state, action: PayloadAction<OX[]>) {
+    setList(state, action: PayloadAction<OXType[]>) {
       state.list = action.payload;
     },
   },
@@ -103,6 +109,7 @@ const oxSlice = createSlice({
         state.loading = false;
         const prev = state.list;
         state.list = [action.payload, ...prev];
+        addList(state.list);
       })
       .addCase(fetchOxAnswer.rejected, (state, action) => {
         state.loading = false;
@@ -111,5 +118,5 @@ const oxSlice = createSlice({
   },
 });
 
-export const {} = oxSlice.actions;
+export const { setList } = oxSlice.actions;
 export default oxSlice.reducer;
