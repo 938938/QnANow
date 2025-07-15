@@ -1,10 +1,13 @@
 'use client';
 
+import useGetList from '@/utils/hooks/useGetList';
+import { useAppSelector } from '@/utils/hooks/useRedux';
 import { useState } from 'react';
 
 const OXList = () => {
-  
+  useGetList();
   const [showList, setShowList] = useState<boolean>(false);
+  const { list } = useAppSelector((state) => state.ox);
   return (
     <div className='relative flex top-2'>
       <button
@@ -15,11 +18,11 @@ const OXList = () => {
       </button>
       {showList && (
         <ul className='absolute z-50 left-36 bg-white'>
-          <li className='p-2 border '>질문 / 답</li>
-          <li className='p-2 border '>
-            아주아주아주아주아주아주아주아주아주아주아주아주아주아주아주매우긴질문
-            / 답
-          </li>
+          {list.map((ele, idx) => (
+            <li className='p-2 border' key={idx}>
+              {ele.ask} / {ele.answer}
+            </li>
+          ))}
         </ul>
       )}
     </div>
