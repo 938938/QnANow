@@ -8,7 +8,7 @@ const OXAnswer = () => {
 
   return (
     <div
-      className={`flex flex-col w-full items-center gap-2 min-h-[50dvh] border-2 border-defaultMidnightexpress rotate-2 mt-5 ${
+      className={`flex flex-col w-full items-center gap-2 min-h-[50dvh] border-2 border-defaultMidnightexpress rotate-2 mt-6 ${
         list[0]
           ? list[0].bgSet === 'yes'
             ? 'bg-defaultDarkturquoise'
