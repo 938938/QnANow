@@ -108,8 +108,9 @@ const oxSlice = createSlice({
       .addCase(fetchOxAnswer.fulfilled, (state, action) => {
         state.loading = false;
         const prev = state.list;
-        state.list = [action.payload, ...prev];
-        addList(state.list);
+        const newList = [action.payload, ...prev.slice(0, 4)];
+        state.list = newList;
+        addList(newList);
       })
       .addCase(fetchOxAnswer.rejected, (state, action) => {
         state.loading = false;
