@@ -6,10 +6,12 @@ const Accordion = ({
   ask,
   answer,
   bgSet,
+  pic,
 }: {
   ask: string;
   answer: string;
   bgSet: string;
+  pic: string;
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
