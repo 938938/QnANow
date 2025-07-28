@@ -106,6 +106,12 @@ const oxSlice = createSlice({
     setList(state, action: PayloadAction<OXType[]>) {
       state.list = action.payload;
     },
+    setAsk(state, action: PayloadAction<OXType>) {
+      state.ask = action.payload.ask;
+      state.answer = action.payload.answer;
+      state.bgSet = action.payload.bgSet;
+      state.pic = action.payload.pic;
+    },
   },
   extraReducers(builder) {
     builder
@@ -131,5 +137,5 @@ const oxSlice = createSlice({
   },
 });
 
-export const { setList } = oxSlice.actions;
+export const { setList, setAsk } = oxSlice.actions;
 export default oxSlice.reducer;
