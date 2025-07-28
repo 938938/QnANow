@@ -1,7 +1,7 @@
 'use client';
 
 import { useAppDispatch } from '@/utils/hooks/useRedux';
-import { fetchOxAnswer, setOxAsk } from '@/utils/redux/oxSlice';
+import { fetchOxAnswer } from '@/utils/redux/oxSlice';
 import { useState } from 'react';
 import InputComponents from '../common/InputComponents';
 import { defaultQuestionList } from '@/utils/global';
@@ -12,8 +12,7 @@ const OXAskInput = () => {
   const dispatch = useAppDispatch();
   const onClickHandler = async () => {
     if (!ask) return;
-    dispatch(setOxAsk(ask));
-    dispatch(fetchOxAnswer());
+    dispatch(fetchOxAnswer(ask));
     setAsk('');
     setSelected(-1);
   };

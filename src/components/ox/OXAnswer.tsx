@@ -4,17 +4,17 @@ import Image from 'next/image';
 import Spinner from '../common/Spinner';
 
 const OXAnswer = () => {
-  const { ask, answer, pic, bgSet, loading, error } = useAppSelector(
+  const { ask, answer, bgSet, pic, loading, error } = useAppSelector(
     (state) => state.ox
   );
 
   return (
     <div
-      className={`flex flex-col w-full items-center gap-2 min-h-[50dvh] border-2 border-defaultMidnightexpress rotate-2 mt-10 ${
-        bgSet === 'yes'
-          ? 'bg-defaultDarkturquoise'
-          : bgSet === 'no'
-          ? 'bg-defaultRadicalred'
+      className={`flex flex-col w-full items-center gap-2 min-h-[50dvh] border-2 border-defaultMidnightexpress rotate-2 mt-6 ${
+        bgSet
+          ? bgSet === 'yes'
+            ? 'bg-defaultDarkturquoise'
+            : 'bg-defaultRadicalred'
           : 'bg-white'
       }`}
     >
@@ -23,7 +23,7 @@ const OXAnswer = () => {
           {ask && (
             <div className='flex justify-start'>
               <p className='text-nowrap'>Q :&nbsp;</p>
-              <p>{ask}</p>
+              <p>{ask || ''}</p>
             </div>
           )}
           {loading && <p>답변을 가져오는 중입니다.</p>}
@@ -31,7 +31,7 @@ const OXAnswer = () => {
           {!loading && answer && (
             <div className='flex justify-start'>
               <p className='text-nowrap'>A :&nbsp;</p>
-              <p>{answer}</p>
+              <p>{answer || ''}</p>
             </div>
           )}
         </div>

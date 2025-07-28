@@ -1,11 +1,20 @@
+import { addList } from '@/actions/ox-actions';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
+
+export type OXType = {
+  ask: string;
+  answer: string;
+  pic: string;
+  bgSet: string;
+};
 
 export type OxState = {
   ask: string;
   answer: string;
   pic: string;
   bgSet: string;
+  list: OXType[];
   loading: boolean;
   error: string | null;
 };
@@ -60,7 +69,7 @@ const getRandomAnswer = (answer: string): string => {
 
 export const fetchOxAnswer = createAsyncThunk(
   '/ask/ox',
-  async (_, thunkAPI) => {
+  async (ask: string, thunkAPI) => {
     try {
       const res = await axios.get(`${process.env.NEXT_PUBLIC_OX_SERVER}`);
       const { answer, image } = res.data;
@@ -69,6 +78,7 @@ export const fetchOxAnswer = createAsyncThunk(
       const output = getRandomAnswer(answer);
 
       return {
+        ask,
         answer: output,
         pic: safeImage,
         bgSet: answer,
@@ -84,6 +94,7 @@ const initialState: OxState = {
   answer: '',
   pic: '',
   bgSet: '',
+  list: [],
   loading: false,
   error: null,
 };
@@ -92,8 +103,14 @@ const oxSlice = createSlice({
   name: 'ox',
   initialState,
   reducers: {
-    setOxAsk(state, action: PayloadAction<string>) {
-      state.ask = action.payload;
+    setList(state, action: PayloadAction<OXType[]>) {
+      state.list = action.payload;
+    },
+    setAsk(state, action: PayloadAction<OXType>) {
+      state.ask = action.payload.ask;
+      state.answer = action.payload.answer;
+      state.bgSet = action.payload.bgSet;
+      state.pic = action.payload.pic;
     },
   },
   extraReducers(builder) {
@@ -104,9 +121,14 @@ const oxSlice = createSlice({
       })
       .addCase(fetchOxAnswer.fulfilled, (state, action) => {
         state.loading = false;
+        const prev = state.list;
+        const newList = [action.payload, ...prev.slice(0, 4)];
+        state.list = newList;
+        state.ask = action.payload.ask;
         state.answer = action.payload.answer;
-        state.pic = action.payload.pic;
         state.bgSet = action.payload.bgSet;
+        state.pic = action.payload.pic;
+        addList(newList);
       })
       .addCase(fetchOxAnswer.rejected, (state, action) => {
         state.loading = false;
@@ -115,5 +137,5 @@ const oxSlice = createSlice({
   },
 });
 
-export const { setOxAsk } = oxSlice.actions;
+export const { setList, setAsk } = oxSlice.actions;
 export default oxSlice.reducer;
