@@ -1,12 +1,11 @@
-# 굿즈 계산기
+# QnA Now
 
-NextJS14, tyepscript, supabase, tailwind CSS, redux-toolkit, react-query
+NextJS14, tyepscript, supabase, genai, tailwind CSS, redux-toolkit, react-query
 <br>
 [사이트](https://qua-now.vercel.app/)
 <br>
-개인이 판매하는 물건을 계산할 수 있는 사이트입니다.<br>
-수량을 체크하여 총액을 계산하거나, 재고를 관리할 수 있습니다.<br>
-정산 탭을 통해 판매내역을 파악할 수 있습니다.
+자유롭게 랜덤한 질문과 답을 받을 수 있는 사이트입니다.<br>
+Google gemini 2.0을 사용하여 간단한 AI 답변을 받을 수도 있습니다.<br>
 <br>
 <br>
 
@@ -32,3 +31,5 @@ Ask AI 화면
 
 - ver1.0.0 <br>
   Open API를 통해 질문에 대한 답변을 확인할 수 있습니다.<br>
+- ver1.0.1 <br>
+  OX질문에서 자신이 했던 질문을 다시 확인할 수 있습니다(최대 5개).<br>
