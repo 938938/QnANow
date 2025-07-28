@@ -10,6 +10,10 @@ export type OXType = {
 };
 
 export type OxState = {
+  ask: string;
+  answer: string;
+  pic: string;
+  bgSet: string;
   list: OXType[];
   loading: boolean;
   error: string | null;
@@ -86,6 +90,10 @@ export const fetchOxAnswer = createAsyncThunk(
 );
 
 const initialState: OxState = {
+  ask: '',
+  answer: '',
+  pic: '',
+  bgSet: '',
   list: [],
   loading: false,
   error: null,
@@ -110,6 +118,10 @@ const oxSlice = createSlice({
         const prev = state.list;
         const newList = [action.payload, ...prev.slice(0, 4)];
         state.list = newList;
+        state.ask = action.payload.ask;
+        state.answer = action.payload.answer;
+        state.bgSet = action.payload.bgSet;
+        state.pic = action.payload.pic;
         addList(newList);
       })
       .addCase(fetchOxAnswer.rejected, (state, action) => {
