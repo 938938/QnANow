@@ -2,6 +2,7 @@
 import { useAppSelector } from '@/utils/hooks/useRedux';
 import Image from 'next/image';
 import Spinner from '../common/Spinner';
+import QuestionMark from './QuestionMark';
 
 const OXAnswer = () => {
   const { ask, answer, bgSet, pic, loading, error } = useAppSelector(
@@ -47,7 +48,7 @@ const OXAnswer = () => {
             />
           </div>
         )}
-        {!loading && !pic && <div></div>}
+        {!loading && !pic && <QuestionMark />}
       </div>
     </div>
   );
