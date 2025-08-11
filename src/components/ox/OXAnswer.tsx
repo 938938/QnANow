@@ -10,7 +10,7 @@ const OXAnswer = () => {
 
   return (
     <div
-      className={`flex flex-col w-full items-center gap-2 min-h-[50dvh] border-2 border-defaultMidnightexpress rotate-2 mt-6 ${
+      className={`flex flex-col w-full items-center gap-2 min-h-[50dvh] border-2 border-defaultMidnightexpress rotate-2 my-6 ${
         bgSet
           ? bgSet === 'yes'
             ? 'bg-defaultDarkturquoise'
@@ -18,7 +18,7 @@ const OXAnswer = () => {
           : 'bg-white'
       }`}
     >
-      <div className='flex flex-col w-full items-center justify-center gap-2 min-h-[50dvh] border-2 border-defaultMidnightexpress -rotate-2 bg-white p-2'>
+      <div className='flex flex-col w-full items-center justify-center min-h-[50dvh] border-2 border-defaultMidnightexpress -rotate-2 bg-white p-2'>
         <div>
           {ask && (
             <div className='flex justify-start'>
@@ -35,9 +35,9 @@ const OXAnswer = () => {
             </div>
           )}
         </div>
-        <div className='p-2 border m-2 max-h-[40dvh]'>
-          {loading && <Spinner />}
-          {!loading && pic && (
+        {loading && <Spinner />}
+        {!loading && pic && (
+          <div className='p-2 border m-2 max-h-[40dvh]'>
             <Image
               src={pic}
               alt={`${answer}을 나타내는 이미지`}
@@ -45,8 +45,9 @@ const OXAnswer = () => {
               height={300}
               objectFit='contain'
             />
-          )}
-        </div>
+          </div>
+        )}
+        {!loading && !pic && <div></div>}
       </div>
     </div>
   );
