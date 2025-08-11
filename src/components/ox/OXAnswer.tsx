@@ -36,8 +36,9 @@ const OXAnswer = () => {
             </div>
           )}
         </div>
-        {loading && <Spinner />}
-        {!loading && pic && (
+        {loading ? (
+          <Spinner />
+        ) : pic ? (
           <div className='p-2 border m-2 max-h-[40dvh]'>
             <Image
               src={pic}
@@ -47,8 +48,9 @@ const OXAnswer = () => {
               objectFit='contain'
             />
           </div>
+        ) : (
+          <QuestionMark />
         )}
-        {!loading && !pic && <QuestionMark />}
       </div>
     </div>
   );
