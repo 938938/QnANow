@@ -12,7 +12,7 @@ const AIAnswerList = () => {
 
   return (
     <div
-      className='mt-10 h-[50dvh] overflow-y-scroll [&::-webkit-scrollbar]:hidden'
+      className='mt-10 h-[48dvh] overflow-y-scroll [&::-webkit-scrollbar]:hidden'
       style={{
         scrollbarWidth: 'none',
         msOverflowStyle: 'none',
