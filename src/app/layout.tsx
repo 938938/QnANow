@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang='ko'>
       <ReactQueryClientProvider>
         <ReduxToolkitProvider>
           <body className='bg-defaultWisper p-2'>
