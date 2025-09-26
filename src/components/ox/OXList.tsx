@@ -3,13 +3,31 @@
 import useGetList from '@/utils/hooks/useGetList';
 import { useAppDispatch, useAppSelector } from '@/utils/hooks/useRedux';
 import { setAsk } from '@/utils/redux/oxSlice';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const OXList = () => {
   useGetList();
   const dispatch = useAppDispatch();
   const { list } = useAppSelector((state) => state.ox);
   const [open, setOpen] = useState<boolean>(false);
+
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        wrapperRef.current &&
+        !wrapperRef.current.contains(e.target as Node)
+      ) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   const onClickLiHandler = (idx: number) => {
     const { ask, answer, pic, bgSet } = list[idx];
     const selected = {
@@ -22,7 +40,7 @@ const OXList = () => {
     setOpen(false);
   };
   return (
-    <div className='relative flex top-2 h-12'>
+    <div ref={wrapperRef} className='relative flex top-2 h-12'>
       {list.length > 0 && (
         <>
           <button
@@ -34,7 +52,7 @@ const OXList = () => {
             &#62; 했던 질문 목록
           </button>
           {open && (
-            <ul className='absolute z-50 left-36 bg-white'>
+            <ul className='absolute z-10 left-36 bg-white'>
               {list.map((ele, idx) => (
                 <li
                   className={`p-2 border border-x-2 cursor-pointer ${

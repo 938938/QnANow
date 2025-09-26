@@ -65,7 +65,7 @@ const InputComponents = ({
         </button>
       </form>
       {showList && filtered.length > 0 && (
-        <ul className='border-2 border-defaultMidnightexpress border-t-0 absolute w-full'>
+        <ul className='border-2 border-defaultMidnightexpress border-t-0 absolute w-full z-50'>
           {filtered.map((ele, idx) => (
             <li
               key={idx}
