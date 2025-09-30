@@ -9,7 +9,8 @@ import { useCreateAsk } from '@/utils/hooks/useCreateAsk';
 const AIAskInput = () => {
   const [ask, setAsk] = useState<string>('');
   const [selected, setSelected] = useState<number>(-1);
-  const { mutate } = useCreateAsk();
+  const { mutate, isPending } = useCreateAsk();
+
   const ai = new GoogleGenAI({
     apiKey: `${process.env.NEXT_PUBLIC_TOKEN}`,
   });
@@ -33,6 +34,7 @@ const AIAskInput = () => {
       onClickHandler={onClickHandler}
       text='질문하기'
       list={defaultQuestionList}
+      isLoading={isPending}
     />
   );
 };

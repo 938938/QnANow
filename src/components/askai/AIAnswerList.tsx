@@ -5,7 +5,8 @@ import AIAnswer from './AIAnswer';
 import { useGetAsks } from '@/utils/hooks/useGetAsks';
 
 const AIAnswerList = () => {
-  const { data, isLoading, error } = useGetAsks();
+  const { data, isLoading, error, isFetching } = useGetAsks();
+
   if (error) {
     return <p>답변을 가져오는 것에 실패했습니다.</p>;
   }
@@ -18,7 +19,7 @@ const AIAnswerList = () => {
         msOverflowStyle: 'none',
       }}
     >
-      {isLoading && (
+      {(isLoading || isFetching) && (
         <div className='flex justify-center items-center'>
           <Spinner />
         </div>

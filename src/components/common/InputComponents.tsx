@@ -10,6 +10,7 @@ const InputComponents = ({
   onClickHandler,
   text,
   list,
+  isLoading,
 }: {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
@@ -18,6 +19,7 @@ const InputComponents = ({
   onClickHandler: () => void;
   text: string;
   list: string[];
+  isLoading?: boolean;
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [showList, setShowList] = useState<boolean>(false);
@@ -37,11 +39,11 @@ const InputComponents = ({
         className='flex'
         onSubmit={(e) => {
           e.preventDefault();
+          onClickHandler();
           if (selected >= 0) {
             setValue(filtered[selected]);
             setSelected(-1);
           }
-          onClickHandler();
           if (selected === -1) {
             inputRef.current!.blur();
           }
@@ -59,7 +61,8 @@ const InputComponents = ({
         />
         <button
           type='submit'
-          className='bg-white px-4 border-defaultMidnightexpress border-2 active:shadow-[inset_4px_4px_gray] border-l-0'
+          className='bg-white px-4 border-defaultMidnightexpress border-2 active:shadow-[inset_4px_4px_gray] border-l-0 disabled:bg-black'
+          disabled={isLoading}
         >
           {text}
         </button>
