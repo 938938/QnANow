@@ -8,5 +8,9 @@ export const useGetAsks = () => {
       const data = await getAsks();
       return data;
     },
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    staleTime: Infinity,
   });
 };
