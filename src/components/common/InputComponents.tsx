@@ -63,7 +63,7 @@ const InputComponents = ({
         <button
           type='submit'
           disabled={isLoading}
-          className='bg-white px-4 border-defaultMidnightexpress border-2 border-l-0 disabled:bg-gray-300 disabled:text-gray-500'
+          className='bg-white px-4 border-defaultMidnightexpress border-2 border-l-0'
         >
           {isLoading ? '입력 중' : text}
         </button>
