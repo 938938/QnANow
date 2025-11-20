@@ -57,17 +57,18 @@ const InputComponents = ({
           onChange={(e) => setValue(e.target.value)}
           onFocus={() => setShowList(true)}
           onBlur={() => setShowList(false)}
+          disabled={isLoading}
           placeholder='이곳에 질문을 입력해주세요.'
         />
         <button
           type='submit'
-          className='bg-white px-4 border-defaultMidnightexpress border-2 active:shadow-[inset_4px_4px_gray] border-l-0 disabled:bg-black'
           disabled={isLoading}
+          className='bg-white px-4 border-defaultMidnightexpress border-2 border-l-0 disabled:bg-gray-300 disabled:text-gray-500'
         >
-          {text}
+          {isLoading ? '입력 중' : text}
         </button>
       </form>
-      {showList && filtered.length > 0 && (
+      {!isLoading && showList && filtered.length > 0 && (
         <ul className='border-2 border-defaultMidnightexpress border-t-0 absolute w-full z-50'>
           {filtered.map((ele, idx) => (
             <li
